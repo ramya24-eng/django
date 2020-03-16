@@ -1,0 +1,15 @@
+{% extends 'demoapp/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+<div class="topnav">
+    <a class="active" href="{% url 'home' %}"> HOME </a>
+    <a href="{% url 'profile_post' %}">POSTS</a>
+    <a  href="{% url 'news' %}">BUSINESS</a>
+    <a href="{% url 'profile' %}">ENTERTAINMENT</a>
+    <a href="{% url 'logout' %}">TECHNOLOGY</a>
+    <a href="{% url 'login' %}">SPORTS</a>
+    <a href="{% url 'createaccount' %}">POLITICAL</a>
+</div>
+   <h2>Welcome {{user.username}}</h2>
+{% endblock content %}
