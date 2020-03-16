@@ -1,0 +1,58 @@
+body
+{
+    margin:0;
+    padding: 0;
+    background-size: cover;
+    background-image: url(img1.jpg);
+    font-family:sans-serif;
+}
+
+.list
+{
+    float: right;
+    list-style:none;
+    margin-top:30px;
+}
+
+.list li
+{
+    display:inline-block;
+
+}
+
+.list li a
+{
+    color:white;
+    text-decoration:none;
+    padding:5px 20px;
+    font-family:"Roboto",sans-serif;
+}
+
+.learn
+{
+    padding-top:250px;
+    padding-left: 150px;
+    font-weight:bold;
+    font-family: sans-serif;
+    font-size: xx-large;
+    color: blanchedalmond;
+}
+.footer
+{
+    float:right;
+    list-style: none;
+    padding-top:180px;
+}
+.footer li
+{
+    display:inline-block;
+}
+.footer li a
+{
+    padding:10px 10px;
+    color: blanchedalmond;
+    text-align:right;
+    text-decoration: none;
+    font-family: sans-serif;
+
+}

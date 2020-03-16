@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aljazera News</title>
+    <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+<div class="topnav">
+    <a class="active" href="{% url 'home' %}"> HOME </a>
+    <a href="{% url 'profile_post' %}">POSTS</a>
+    <a href="{% url 'business' %}">BUSINESS</a>
+    <a href="{% url 'entertainment' %}">ENTERTAINMENT</a>
+    <a href="{% url 'technology' %}">TECHNOLOGY</a>
+    <a href="{% url 'sports' %}">SPORTS</a>
+    <a href="{% url 'health' %}">HEALTH</a>
+     <div class="search-container">
+    <form method="GET" action="/search">
+    <input type="text" placeholder="Search.." name="Search">
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="jumbotron" style="color:black">
+    <h1 style="color:">
+        This is the latest news
+    </h1>
+</div>
+
+<div class="container">
+    {% for new, des, i, lin in mylist %}
+    <img src="{{i}}" alt="">
+    <h3>News:</h3>{{new}}
+    {{value | linebreaks}}
+    <h4>Description:</h4>{{des}}
+    <a href="{{lin}}">Readmore...</a>
+    {{value | linebreaks}}
+    {% endfor %}
+
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+ {% extends 'demoapp/base.html' %}
+ {% block content %}
+ {% include 'demoapp/nav_bar.html' %}
+           <h1>LOGIN ACCOUNT</h1>
+           <form method="POST" action="">
+               {% csrf_token %}
+               {{form.as_p}}
+            <button>Login</button>
+           </form>
+
+ {% endblock %}
+

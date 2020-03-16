@@ -1,0 +1,64 @@
+{% extends 'demoapp/base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+         <h2>Welcome {{user.username}}</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<div class="topnav">
+    <a class="active" href="{% url 'home' %}"> HOME </a>
+    <a href="{% url 'profile_post' %}">POSTS</a>
+    <a href="{% url 'business' %}">BUSINESS</a>
+    <a href="{% url 'entertainment' %}">ENTERTAINMENT</a>
+    <a href="{% url 'technology' %}">TECHNOLOGY</a>
+    <a href="{% url 'sports' %}">SPORTS</a>
+    <a href="{% url 'health' %}">HEALTH</a>
+    <a href="{% url 'logout' %}">LOGOUT</a>
+     <div class="search-container">
+    <form method="GET" action="/search">
+    <input type="text" placeholder="Search.." name="Search">
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</div>
+
+<div class="container">
+    {% for new, des, i, lin  in mylist %}
+    <img src="{{i}}" alt="">
+    <h3>News:</h3>{{new}}
+    {{value | linebreaks}}
+    <h4>Description:</h4>{{des}}
+    <a href="{{lin}}">Readmore...</a>
+    {{value | linebreaks}}
+    {% endfor %}
+</div>
+
+{% if mylist.has_other_pages %}
+  <ul class="pagination">
+    {% if mylist.has_previous %}
+      <li><a href="?page={{ mylist.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in mylist.paginator.page_range %}
+      {% if mylist.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if mylist.has_next %}
+      <li><a href="?page={{ mylist.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% else %}
+        <h2>Register or Login to proceed</h2>
+        {% include 'demoapp/nav_bar.html' %}
+{% endif %}
+
+
+{% endblock content %}
